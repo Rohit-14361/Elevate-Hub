@@ -11,11 +11,6 @@ const signUp = async (req, res) => {
       role,
       username,
     });
-    if (user) {
-      return res.status(httpStatus.badRequest).json({
-        message: "User already exist",
-      });
-    }
 
     user.password = undefined; // remove password from response before send it to the client
 
@@ -34,6 +29,18 @@ const signUp = async (req, res) => {
 
 const Login = async (req, res) => {
   try {
+    const { email, password } = req.body;
+    const user = await userService.loginUserWithEmailAndPassword(
+      email,
+      password
+    );
+    const token = await tokenService.generateAuthToken(user);
+    user.passwor = undefined;
+    res.status(httpStatus.ok).json({
+      message: "User logged in successfully",
+      token,
+      user,
+    });
   } catch (err) {}
 };
 

@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import routes from "./routes";
 
-import Nav from "./components/Nav";
+// import Nav from "./components/Nav";
 import { Toaster } from "react-hot-toast";
 
 function App() {

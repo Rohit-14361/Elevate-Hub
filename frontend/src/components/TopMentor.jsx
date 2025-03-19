@@ -8,6 +8,7 @@ const TopMentor = () => {
   const [loading, setLoading] = useState(false);
   const { setMentorData } = useMentorStore();
   console.log("from mentor component");
+
   const selectTopMentor = (mentors) => {
     const topSelectedMentors = [];
     const totalMentors = mentors.length;
@@ -28,7 +29,7 @@ const TopMentor = () => {
       console.log(response);
       const allMentors = response?.data?.mentors || [];
       setMentorData(allMentors);
-      selectTopMentors(selectTopMentor(allMentors));
+      setTopMentors(selectTopMentor(allMentors));
     } catch (err) {
       console.log(err);
     }
@@ -41,7 +42,11 @@ const TopMentor = () => {
     <>
       <div>
         <h1>Top Mentors</h1>
-        <div>{topMentors}</div>
+        <div>
+          {topMentors.map((mentor) => {
+            return <MentorCard mentor={mentor} key={mentor?._id} />;
+          })}
+        </div>
       </div>
     </>
   );
@@ -58,3 +63,5 @@ export default TopMentor;
 // }
 
 // export default TopMentor;
+
+// 10 march

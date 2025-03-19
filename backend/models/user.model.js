@@ -19,6 +19,7 @@ const userSchema = new Schema({
     required: true,
     trim: true,
     unique: true,
+    index: true,
   },
   password: {
     type: Schema.Types.String,
@@ -33,6 +34,10 @@ const userSchema = new Schema({
   },
 });
 
+userSchema.methods.isPasswordMatch = async (password) => {
+  return bcrypt.compare(password, this.password);
+};
+
 userSchema.pre("save", async function (next) {
   if (this.isModified("password")) {
     this.password = await bcrypt.hash(this.password, 8);
@@ -40,7 +45,7 @@ userSchema.pre("save", async function (next) {
   next();
 });
 
-userSchema.index({ email: 1 });
+// userSchema.index({ email: 1 });
 // index is for lookup the value and 1 means ascending order
 
 const userModel = model("User", userSchema);

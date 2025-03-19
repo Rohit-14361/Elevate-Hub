@@ -16,7 +16,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); //to allow nested object data from frontend
 app.use(cookieParser());
-app.use(config.PREFIX, routes);
+
+app.use("/v1", routes);
+// app.use(config.PREFIX, routes);
 // app.use();
 
 module.exports = app;

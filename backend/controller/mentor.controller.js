@@ -3,7 +3,7 @@ const mentorService = require("../services/mentor.service");
 const httpStatus = require("../utils/httpStatus");
 
 const getAllMentors = async (req, res, next) => {
-  const mentors = await mentorService.getAllMentors();
+  const mentors = await mentorService.getAllMentor();
   res.status(httpStatus.ok).json({
     success: true,
     mentors,

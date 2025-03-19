@@ -1,14 +1,22 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import { useStore } from "zustand";
 
 function Nav() {
+  const { use, setUser } = useStore();
   const navigate = useNavigate();
 
   const signUpMentorBtn = () => {
     navigate("/signup/mentor");
   };
+  const signInButtonClick = () => {
+    navigate("/login");
+  };
 
-  const signUpStudentBtn = () => navigate("/signup/student");
+  const signUpStudentBtn = () => {
+    navigate("/signup/student");
+  };
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   return (
     <div className="bg-white">
@@ -41,7 +49,10 @@ function Nav() {
               </button>
             </li>
             <li>
-              <button className="h-12 px-6 font-medium tracking-wide hover:text-green-700 cursor-pointer text-gray rounded-md border-none">
+              <button
+                className="h-12 px-6 font-medium tracking-wide hover:text-green-700 cursor-pointer text-gray rounded-md border-none"
+                onClick={signInButtonClick}
+              >
                 Sign in
               </button>
             </li>
@@ -66,7 +77,10 @@ function Nav() {
               </button>
 
               {/* signin */}
-              <button className="block w-full text-center py-2 font-medium tracking-wide text-green-700 rounded-md hover:bg-green-600 transition-all duration-300 hover:text-white">
+              <button
+                onClick={signInButtonClick}
+                className="block w-full text-center py-2 font-medium tracking-wide text-green-700 rounded-md hover:bg-green-600 transition-all duration-300 hover:text-white"
+              >
                 Sign In
               </button>
               {/* signup */}
