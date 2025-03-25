@@ -27,7 +27,7 @@ const Signup = () => {
     };
 
     try {
-      const res = await auth.signUp(formData);
+      const res = await auth.signup(formData);
       console.log(res);
       reset();
       toast.success(res?.data.message || "Account created successfully!");

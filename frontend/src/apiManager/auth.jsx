@@ -1,10 +1,12 @@
 import AxiosInstances from ".";
-const Login = (data) => {
-  return AxiosInstances.post("/auth/login", data);
+const login = (data) => {
+  return AxiosInstances.post("/auth/login", data).then((response) => {
+    return response;
+  });
 };
 
-const signUp = (data) => {
+const signup = (data) => {
   return AxiosInstances.post("/auth/signup", data);
 };
 
-export default { Login, signUp };
+export default { login, signup };

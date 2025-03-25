@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import routes from "./routes";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 // import Nav from "./components/Nav";
 import { Toaster } from "react-hot-toast";
@@ -17,7 +18,16 @@ function App() {
               key={route.path}
               path={route.path}
               element={<RouteElement route={route} />}
-            />
+            >
+              {route.children &&
+                route.children.map((child) => (
+                  <Route
+                    key={child.path}
+                    path={child.path}
+                    element={child.element}
+                  />
+                ))}
+            </Route>
           ))}
         </Routes>
       </BrowserRouter>

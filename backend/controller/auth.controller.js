@@ -41,7 +41,13 @@ const Login = async (req, res) => {
       token,
       user,
     });
-  } catch (err) {}
+  } catch (err) {
+    console.log(err);
+    return res.status(httpStatus.UNAUTHORIZED).json({
+      success: false,
+      message: err.message || "Login failed",
+    });
+  }
 };
 
 module.exports = { signUp, Login };

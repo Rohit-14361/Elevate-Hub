@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { createJSONStorage, devtools } from "zustand/middleware";
+import { createJSONStorage, devtools, persist } from "zustand/middleware";
 import { USER_STORE_PERSIST } from "../const";
 const useUserStore = create()(
   devtools(

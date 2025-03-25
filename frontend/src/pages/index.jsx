@@ -386,13 +386,13 @@ function Home() {
             backgroundSize: "200% 200%",
             animation: "gradientAnimation 6s ease infinte",
           }}
-        >
-          <div className="mx-auto">
-            <TopMentor />
-          </div>
-        </section>
+        ></section>
         {/* Top mentors section  */}
 
+        {/*top mentor*/}
+        <section className="text-gray-300 bg-gray-200 py-4 my-10">
+          <TopMentor />
+        </section>
         {/* pricing section start here */}
 
         <section className="bg-[#F0FDF4] p-10">

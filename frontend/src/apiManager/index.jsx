@@ -28,7 +28,7 @@ let AxiosInstances;
       if (error) {
         if (error.response?.data.success === "false") {
           const message = errorr.response.data.message;
-          message ? toast.erro(message) : toast.error("Something went wrong");
+          message ? toast.error(message) : toast.error("Something went wrong");
           if (error.response.status === 401) {
             removeToken();
             sessionStorage.removeItem(USER_STORE_PERSIST);

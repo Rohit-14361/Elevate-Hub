@@ -4,8 +4,8 @@ const getToken = () => {
   return sessionStorage.getItem(TOKEN);
 };
 
-const setToken = () => {
-  sessionStorage.setItem(TOKEN);
+const setToken = (data) => {
+  sessionStorage.setItem(TOKEN, data);
 };
 const removeToken = () => {
   sessionStorage.removeItem(TOKEN);

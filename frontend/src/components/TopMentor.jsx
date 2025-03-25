@@ -3,9 +3,11 @@ import useMentorStore from "../store/mentor";
 import mentorApi from "../apiManager/mentor";
 import MentorCard from "./MentorCard";
 import { Button, Spin } from "antd";
+import { useNavigate } from "react-router-dom";
+
 const TopMentor = () => {
   const [topMentors, setTopMentors] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const { setMentorData } = useMentorStore();
   console.log("from mentor component");
 
@@ -39,16 +41,20 @@ const TopMentor = () => {
     fetchAllMentors();
   }, []);
   return (
-    <>
-      <div>
-        <h1>Top Mentors</h1>
-        <div>
-          {topMentors.map((mentor) => {
-            return <MentorCard mentor={mentor} key={mentor?._id} />;
-          })}
-        </div>
+    <div className="max-w-[1050px] mx-auto">
+      <h1 className="text-3xl font-bold text-green-700 mb-10">Top Mentors</h1>
+      <div className="grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {topMentors.map((mentor) => {
+          return <MentorCard mentor={mentor} key={mentor?._id} />;
+        })}
       </div>
-    </>
+      <button
+        className="bg-green-300 text-lg py-2 px-5 rounded-lg outline-none border-none font-bold text-green-700 transition transform hover:scale-105 mt-16"
+        onClick={() => navigate("/mentors")}
+      >
+        View All
+      </button>
+    </div>
   );
 };
 
